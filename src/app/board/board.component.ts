@@ -23,4 +23,8 @@ export class BoardComponent {
         this.winner = null;
         this.xIsNext = true;
     }
+
+    get player() {
+        return this.xIsNext ? 'X' : 'O';
+    }
 }
