@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SquareComponent } from "../square/square.component";
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-board',
@@ -14,7 +14,7 @@ export class BoardComponent {
     xIsNext: boolean = true;
     winner: string | null = null;
 
-    constructor() {}
+    constructor() { }
 
     ngOnInit() {
         this.newGame();
@@ -31,7 +31,7 @@ export class BoardComponent {
     }
 
     makeMove(idx: number) {
-        if (!this.squares[idx]) {
+        if (!this.squares[idx] && !this.winner) {
             this.squares.splice(idx, 1, this.player);
             this.xIsNext = !this.xIsNext;
         }
@@ -52,13 +52,19 @@ export class BoardComponent {
             [2, 4, 6],
         ]
 
-        lines.forEach(line => {
+        for (let line of lines) {
             const [a, b, c] = line
-            if (this.squares[a] === this.squares[b] && this.squares[a] === this.squares[c]) {
+
+            if (this.squares[a] && this.squares[a] === this.squares[b] && this.squares[a] === this.squares[c]) {
                 return this.squares[a];
             }
-        })
+        }
 
         return null;
+    }
+
+
+    updateGameState() {
+        this.winner = this.calculateWinner();
     }
 }
