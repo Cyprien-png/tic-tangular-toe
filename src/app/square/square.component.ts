@@ -9,4 +9,11 @@ import { Component, Input } from '@angular/core';
 })
 export class SquareComponent {
     @Input() value: 'X' | 'O' | undefined;
+
+    icon() {
+        if (this.value) {
+            return this.value === 'X' ? "assets/cross.svg" : "assets/circle.svg";
+        }
+        return null
+    }
 }

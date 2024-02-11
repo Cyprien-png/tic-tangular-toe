@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Bebas+Neue&family=Inria+Sans&display=swap');
+
+html {
+    height: 100dvh;
+
+    body {
+        margin: 0;
+        height: 100dvh;
+        background-color: #17102b;
+        font-family: 'Inria Sans', sans-serif;
+        color: #fbb5d9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
